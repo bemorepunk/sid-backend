@@ -8,10 +8,14 @@
 \f0\fs24 \cf0 \{\
   "name": "sid-backend",\
   "version": "1.0.0",\
+  "description": "SID AI backend",\
   "main": "sid-server.js",\
   "type": "module",\
   "scripts": \{\
     "start": "node sid-server.js"\
+  \},\
+  "engines": \{\
+    "node": ">=18"\
   \},\
   "dependencies": \{\
     "express": "^4.18.2",\
@@ -19,4 +23,5 @@
     "@supabase/supabase-js": "^2.39.0"\
   \}\
 \}\
+\
 }
