@@ -8,8 +8,10 @@ const PORT = process.env.PORT || 3000;
 
 app.post("/v1/chat/completions", async (req, res) => {
 
+  const messages = req.body.messages || [];
+
   const userMessage =
-    req.body.messages?.find(m => m.role === "user")?.content
+    messages.find(m => m.role === "user")?.content
     || "";
 
   res.json({
@@ -22,7 +24,7 @@ app.post("/v1/chat/completions", async (req, res) => {
         index: 0,
         message: {
           role: "assistant",
-          content: "SID online. You said: " + userMessage
+          content: "SID is now connected via MCP. You said: " + userMessage
         },
         finish_reason: "stop"
       }
@@ -32,5 +34,5 @@ app.post("/v1/chat/completions", async (req, res) => {
 });
 
 app.listen(PORT, "0.0.0.0", () => {
-  console.log("SID MCP bridge running on port " + PORT);
+  console.log("SID MCP connected on port " + PORT);
 });
