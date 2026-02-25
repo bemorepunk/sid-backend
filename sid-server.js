@@ -8,6 +8,9 @@ const PORT = process.env.PORT || 3000;
 
 app.post("/v1/chat/completions", async (req, res) => {
 
+  // Accept Authorization header without validation
+  const authHeader = req.headers.authorization || "";
+
   const messages = req.body.messages || [];
 
   const userMessage =
@@ -24,7 +27,7 @@ app.post("/v1/chat/completions", async (req, res) => {
         index: 0,
         message: {
           role: "assistant",
-          content: "SID is now connected via MCP. You said: " + userMessage
+          content: "SID connected successfully. You said: " + userMessage
         },
         finish_reason: "stop"
       }
@@ -34,5 +37,5 @@ app.post("/v1/chat/completions", async (req, res) => {
 });
 
 app.listen(PORT, "0.0.0.0", () => {
-  console.log("SID MCP connected on port " + PORT);
+  console.log("SID MCP bridge active on port " + PORT);
 });
